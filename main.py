@@ -23,9 +23,17 @@ print("|", teo[6], teo[7], teo[8], "|")
 print("---------")
 
 def x_move():
-    cells1, cells2 = input("Enter the coordinates: ").split()
-    cells1 = int(cells1)
-    cells2 = int(cells2)
+    alphabet = list("abcdefghijklmnopqrstuvwxyz")
+    cells = input("Enter the coordinates: ")
+    cells = list(cells)
+    cells_check = any(item in cells for item in alphabet)
+    while cells_check:
+        print("You should enter numbers!")
+        cells = input("Enter the coordinates: ")
+        cells = list(cells)
+        cells_check = any(item in cells for item in alphabet)
+    cells1 = int(cells[0])
+    cells2 = int(cells[1])
     while (cells1 or cells2 < 1) or (cells1 or cells2 > 3):
         print("Coordinates should be from 1 to 3!")
 
