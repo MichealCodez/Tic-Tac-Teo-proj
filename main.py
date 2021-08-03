@@ -1,4 +1,4 @@
-# write your code here
+
 player1 = "X"
 player2 = "O"
 cell1 = "1 1"
@@ -24,7 +24,11 @@ print("---------")
 
 def x_move():
     cells1, cells2 = input("Enter the coordinates: ").split()
-    cells1 =
+    cells1 = int(cells1)
+    cells2 = int(cells2)
+    while (cells1 or cells2 < 1) or (cells1 or cells2 > 3):
+        print("Coordinates should be from 1 to 3!")
+
     while cells != legal_cells:
         print("Coordinates should be from 1 to 3!")
 
