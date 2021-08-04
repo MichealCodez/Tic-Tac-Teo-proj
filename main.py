@@ -33,14 +33,14 @@ def x_move():
         cells = list(cells)
         cells_check = any(item in cells for item in alphabet)
     cells = list(cells)
-    cells1 = int(cells[0])
-    cells2 = int(cells[2])
-    while cells1 or cells2 < 1 or cells1 or cells2 > 3:
+    check1 = int(cells[0]) < 1 or int(cells[0]) > 3
+    check2 = int(cells[2]) < 1 or int(cells[2]) > 3
+    while check1 or check2:
         print("Coordinates should be from 1 to 3!")
         cells = input("Enter the coordinates: ")
-        cells1 = int(cells[0])
-        cells2 = int(cells[2])
-    cells = " ".join(cells)
+        check1 = int(cells[0]) < 1 or int(cells[0]) > 3
+        check2 = int(cells[2]) < 1 or int(cells[2]) > 3
+    cells = "".join(cells)
     check_available_cell = (cells == teo[0]) or (cells == teo[1]) or (cells == teo[2]) or (cells == teo[3]) or \
                            (cells == teo[4]) or (cells == teo[5]) or (cells == teo[6]) or (cells == teo[7]) or \
                            (cells == teo[8])
@@ -51,23 +51,41 @@ def x_move():
                                (cell5 == teo[4]) or (cell6 == teo[5]) or (cell7 == teo[6]) or (cell8 == teo[7]) or \
                                (cell9 == teo[8])
     if cells == teo[0]:
-        teo[0] = player1
-    elif cells == teo[1]:
-        teo[1] = player1
-    elif cells == teo[2]:
-        teo[2] = player1
-    elif cells == teo[3]:
-        teo[3] = player1
-    elif cells == teo[4]:
-        teo[4] = player1
-    elif cells == teo[5]:
-        teo[5] = player1
-    elif cells == teo[6]:
-        teo[6] = player1
-    elif cells == teo[7]:
-        teo[7] = player1
-    elif cells == teo[8]:
-        teo[8] = player1
+        teo[0] = "X"
+    else:
+        teo[0] = " "
+    if cells == teo[1]:
+        teo[1] = "X"
+    else:
+        teo[1] = " "
+    if cells == teo[2]:
+        teo[2] = "X"
+    else:
+        teo[2] = " "
+    if cells == teo[3]:
+        teo[3] = "X"
+    else:
+        teo[3] = " "
+    if cells == teo[4]:
+        teo[4] = "X"
+    else:
+        teo[4] = " "
+    if cells == teo[5]:
+        teo[5] = "X"
+    else:
+        teo[5] = " "
+    if cells == teo[6]:
+        teo[6] = "X"
+    else:
+        teo[6] = " "
+    if cells == teo[7]:
+        teo[7] = "X"
+    else:
+        teo[7] = " "
+    if cells == teo[8]:
+        teo[8] = "X"
+    else:
+        teo[8] = " "
     print("---------")
     print("|", teo[0], teo[1], teo[2], "|")
     print("|", teo[3], teo[4], teo[5], "|")
