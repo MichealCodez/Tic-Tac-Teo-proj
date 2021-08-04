@@ -15,10 +15,13 @@ cells_row1 = [cell1, cell2, cell3]
 cells_row2 = [cell4, cell5, cell6]
 cells_row3 = [cell7, cell8, cell9]
 teo = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]
+first_input = input()
+first_input = first_input.replace("_", " ")
+first_input = list(first_input)
 print("---------")
-print("|", teo[0], teo[1], teo[2], "|")
-print("|", teo[3], teo[4], teo[5], "|")
-print("|", teo[6], teo[7], teo[8], "|")
+print("|", first_input[0], first_input[1], first_input[2], "|")
+print("|", first_input[3], first_input[4], first_input[5], "|")
+print("|", first_input[6], first_input[7], first_input[8], "|")
 print("---------")
 
 
@@ -53,39 +56,39 @@ def x_move():
     if cells == teo[0]:
         teo[0] = "X"
     else:
-        teo[0] = " "
+        teo[0] = first_input[0]
     if cells == teo[1]:
         teo[1] = "X"
     else:
-        teo[1] = " "
+        teo[1] = first_input[1]
     if cells == teo[2]:
         teo[2] = "X"
     else:
-        teo[2] = " "
+        teo[2] = first_input[2]
     if cells == teo[3]:
         teo[3] = "X"
     else:
-        teo[3] = " "
+        teo[3] = first_input[3]
     if cells == teo[4]:
         teo[4] = "X"
     else:
-        teo[4] = " "
+        teo[4] = first_input[4]
     if cells == teo[5]:
         teo[5] = "X"
     else:
-        teo[5] = " "
+        teo[5] = first_input[5]
     if cells == teo[6]:
         teo[6] = "X"
     else:
-        teo[6] = " "
+        teo[6] = first_input[6]
     if cells == teo[7]:
         teo[7] = "X"
     else:
-        teo[7] = " "
+        teo[7] = first_input[7]
     if cells == teo[8]:
         teo[8] = "X"
     else:
-        teo[8] = " "
+        teo[8] = first_input[8]
     print("---------")
     print("|", teo[0], teo[1], teo[2], "|")
     print("|", teo[3], teo[4], teo[5], "|")
@@ -101,7 +104,10 @@ empty_space1 = " "
 empty_space2 = "_"
 count_x = teo.count(player1)
 count_o = teo.count(player2)
-
+if count_x == 0:
+    count_x = 1
+elif count_o == 0:
+    count_o = 1
 x_wins_row1 = player1 == row[0][0] == row[0][1] == row[0][2]
 o_wins_row1 = player2 == row[0][0] == row[0][1] == row[0][2]
 x_wins_row2 = player1 == row[1][0] == row[1][1] == row[1][2]
