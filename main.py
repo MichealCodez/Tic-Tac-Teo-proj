@@ -14,13 +14,13 @@ legal_cells = cell1 or cell2 or cell3 or cell4 or cell5 or cell6 or cell7 or cel
 cells_row1 = [cell1, cell2, cell3]
 cells_row2 = [cell4, cell5, cell6]
 cells_row3 = [cell7, cell8, cell9]
-teo = input()
-
+teo = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]
 print("---------")
 print("|", teo[0], teo[1], teo[2], "|")
 print("|", teo[3], teo[4], teo[5], "|")
 print("|", teo[6], teo[7], teo[8], "|")
 print("---------")
+
 
 def x_move():
     alphabet = list("abcdefghijklmnopqrstuvwxyz")
@@ -32,14 +32,50 @@ def x_move():
         cells = input("Enter the coordinates: ")
         cells = list(cells)
         cells_check = any(item in cells for item in alphabet)
+    cells = list(cells)
     cells1 = int(cells[0])
-    cells2 = int(cells[1])
-    while (cells1 or cells2 < 1) or (cells1 or cells2 > 3):
+    cells2 = int(cells[2])
+    while cells1 or cells2 < 1 or cells1 or cells2 > 3:
         print("Coordinates should be from 1 to 3!")
+        cells = input("Enter the coordinates: ")
+        cells1 = int(cells[0])
+        cells2 = int(cells[2])
+    cells = " ".join(cells)
+    check_available_cell = (cells == teo[0]) or (cells == teo[1]) or (cells == teo[2]) or (cells == teo[3]) or \
+                           (cells == teo[4]) or (cells == teo[5]) or (cells == teo[6]) or (cells == teo[7]) or \
+                           (cells == teo[8])
+    while check_available_cell == (player1 or player2):
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        check_available_cell = (cell1 == teo[0]) or (cell2 == teo[1]) or (cell3 == teo[2]) or (cell4 == teo[3]) or \
+                               (cell5 == teo[4]) or (cell6 == teo[5]) or (cell7 == teo[6]) or (cell8 == teo[7]) or \
+                               (cell9 == teo[8])
+    if cells == teo[0]:
+        teo[0] = player1
+    elif cells == teo[1]:
+        teo[1] = player1
+    elif cells == teo[2]:
+        teo[2] = player1
+    elif cells == teo[3]:
+        teo[3] = player1
+    elif cells == teo[4]:
+        teo[4] = player1
+    elif cells == teo[5]:
+        teo[5] = player1
+    elif cells == teo[6]:
+        teo[6] = player1
+    elif cells == teo[7]:
+        teo[7] = player1
+    elif cells == teo[8]:
+        teo[8] = player1
+    print("---------")
+    print("|", teo[0], teo[1], teo[2], "|")
+    print("|", teo[3], teo[4], teo[5], "|")
+    print("|", teo[6], teo[7], teo[8], "|")
+    print("---------")
 
-    while cells != legal_cells:
-        print("Coordinates should be from 1 to 3!")
 
+x_move()
 row = [[teo[0], teo[1], teo[2]], [teo[3], teo[4], teo[5]], [teo[6], teo[7], teo[8]]]
 column = [[teo[0], teo[3], teo[6]], [teo[1], teo[4], teo[7]], [teo[2], teo[5], teo[8]]]
 diagonal = [[teo[0], teo[4], teo[8]], [teo[2], teo[4], teo[6]]]
