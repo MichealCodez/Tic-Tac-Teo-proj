@@ -1,4 +1,3 @@
-
 player1 = "X"
 player2 = "O"
 cell1 = "1 1"
