@@ -46,7 +46,7 @@ def x_move():
     check_available_cell = (cells == teo[0]) or (cells == teo[1]) or (cells == teo[2]) or (cells == teo[3]) or \
                            (cells == teo[4]) or (cells == teo[5]) or (cells == teo[6]) or (cells == teo[7]) or \
                            (cells == teo[8])
-    while check_available_cell == (player1 or player2):
+    while check_available_cell == "X" or "O":
         print("This cell is occupied! Choose another one!")
         cells = input("Enter the coordinates: ")
         check_available_cell = (cell1 == teo[0]) or (cell2 == teo[1]) or (cell3 == teo[2]) or (cell4 == teo[3]) or \
