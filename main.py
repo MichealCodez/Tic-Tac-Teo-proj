@@ -1,5 +1,7 @@
 player1 = "X"
 player2 = "O"
+empty_space1 = " "
+empty_space2 = "_"
 cell1 = "1 1"
 cell2 = "1 2"
 cell3 = "1 3"
@@ -24,7 +26,7 @@ print("|", first_input[6], first_input[7], first_input[8], "|")
 print("---------")
 
 
-def x_move():
+def moves():
     alphabet = list("abcdefghijklmnopqrstuvwxyz")
     cells = input("Enter the coordinates: ")
     cells = list(cells)
@@ -43,15 +45,142 @@ def x_move():
         check1 = int(cells[0]) < 1 or int(cells[0]) > 3
         check2 = int(cells[2]) < 1 or int(cells[2]) > 3
     cells = "".join(cells)
-    check_available_cell = (cells == teo[0]) or (cells == teo[1]) or (cells == teo[2]) or (cells == teo[3]) or \
-                           (cells == teo[4]) or (cells == teo[5]) or (cells == teo[6]) or (cells == teo[7]) or \
-                           (cells == teo[8])
-    while check_available_cell == "X" or "O":
+    x = cells == teo[0]
+    y = first_input[0] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
         print("This cell is occupied! Choose another one!")
         cells = input("Enter the coordinates: ")
-        check_available_cell = (cell1 == teo[0]) or (cell2 == teo[1]) or (cell3 == teo[2]) or (cell4 == teo[3]) or \
-                               (cell5 == teo[4]) or (cell6 == teo[5]) or (cell7 == teo[6]) or (cell8 == teo[7]) or \
-                               (cell9 == teo[8])
+        x = cells == teo[0]
+        y = first_input[0] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[1]
+    y = first_input[1] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[1]
+        y = first_input[1] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[2]
+    y = first_input[2] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[2]
+        y = first_input[2] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[3]
+    y = first_input[3] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[3]
+        y = first_input[3] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[4]
+    y = first_input[4] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[4]
+        y = first_input[4] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[5]
+    y = first_input[5] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[5]
+        y = first_input[5] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[6]
+    y = first_input[6] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[6]
+        y = first_input[6] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[7]
+    y = first_input[7] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[7]
+        y = first_input[7] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[8]
+    y = first_input[8] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[8]
+        y = first_input[8] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+
     if cells == teo[0]:
         teo[0] = "X"
     else:
@@ -88,6 +217,7 @@ def x_move():
         teo[8] = "X"
     else:
         teo[8] = first_input[8]
+
     print("---------")
     print("|", teo[0], teo[1], teo[2], "|")
     print("|", teo[3], teo[4], teo[5], "|")
@@ -95,12 +225,10 @@ def x_move():
     print("---------")
 
 
-x_move()
+moves()
 row = [[teo[0], teo[1], teo[2]], [teo[3], teo[4], teo[5]], [teo[6], teo[7], teo[8]]]
 column = [[teo[0], teo[3], teo[6]], [teo[1], teo[4], teo[7]], [teo[2], teo[5], teo[8]]]
 diagonal = [[teo[0], teo[4], teo[8]], [teo[2], teo[4], teo[6]]]
-empty_space1 = " "
-empty_space2 = "_"
 count_x = teo.count(player1)
 count_o = teo.count(player2)
 if count_x == 0:
@@ -144,6 +272,5 @@ elif empty_space1 in teo or empty_space2 in teo:
     print("Game not finished")
 elif not x_winnings and not o_winnings and empty_space1 not in teo or empty_space2 not in teo:
     print("Draw")
-
 else:
     print("Impossible")
