@@ -16,17 +16,46 @@ cells_row1 = [cell1, cell2, cell3]
 cells_row2 = [cell4, cell5, cell6]
 cells_row3 = [cell7, cell8, cell9]
 teo = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]
-first_input = input()
-first_input = first_input.replace("_", " ")
-first_input = list(first_input)
+first_input = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 print("---------")
 print("|", first_input[0], first_input[1], first_input[2], "|")
 print("|", first_input[3], first_input[4], first_input[5], "|")
 print("|", first_input[6], first_input[7], first_input[8], "|")
 print("---------")
+row = [[first_input[0], first_input[1], first_input[2]], [first_input[3], first_input[4], first_input[5]],
+       [first_input[6], first_input[7], first_input[8]]]
+column = [[first_input[0], first_input[3], first_input[6]], [first_input[1], first_input[4], first_input[7]],
+          [first_input[2], first_input[5], first_input[8]]]
+diagonal = [[first_input[0], first_input[4], first_input[8]], [first_input[2], first_input[4], first_input[6]]]
+
+x_wins_row1 = player1 == row[0][0] == row[0][1] == row[0][2]
+o_wins_row1 = player2 == row[0][0] == row[0][1] == row[0][2]
+x_wins_row2 = player1 == row[1][0] == row[1][1] == row[1][2]
+o_wins_row2 = player2 == row[1][0] == row[1][1] == row[1][2]
+x_wins_row3 = player1 == row[2][0] == row[2][1] == row[2][2]
+o_wins_row3 = player2 == row[2][0] == row[2][1] == row[2][2]
+
+x_wins_diagonal1 = player1 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
+o_wins_diagonal1 = player2 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
+x_wins_diagonal2 = player1 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
+o_wins_diagonal2 = player2 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
+
+x_wins_column1 = player1 == column[0][0] == column[0][1] == column[0][2]
+o_wins_column1 = player2 == column[0][0] == column[0][1] == column[0][2]
+x_wins_column2 = player1 == column[1][0] == column[1][1] == column[1][2]
+o_wins_column2 = player2 == column[1][0] == column[1][1] == column[1][2]
+x_wins_column3 = player1 == column[2][0] == column[2][1] == column[2][2]
+o_wins_column3 = player2 == column[2][0] == column[2][1] == column[2][2]
+
+x_winnings = x_wins_row1 or x_wins_row2 or x_wins_row3 or x_wins_diagonal1 or x_wins_diagonal2 or x_wins_column1 \
+             or x_wins_column2 or x_wins_column3
+o_winnings = o_wins_row1 or o_wins_row2 or o_wins_row3 or o_wins_diagonal1 or o_wins_diagonal2 or o_wins_column1 \
+             or o_wins_column2 or o_wins_column3
+winnings = x_winnings or o_winnings
+draw = not x_winnings and not o_winnings and empty_space1 not in first_input
 
 
-def moves():
+def x_moves():
     alphabet = list("abcdefghijklmnopqrstuvwxyz")
     cells = input("Enter the coordinates: ")
     cells = list(cells)
@@ -182,95 +211,306 @@ def moves():
             z = 0
 
     if cells == teo[0]:
-        teo[0] = "X"
-    else:
-        teo[0] = first_input[0]
-    if cells == teo[1]:
-        teo[1] = "X"
-    else:
-        teo[1] = first_input[1]
-    if cells == teo[2]:
-        teo[2] = "X"
-    else:
-        teo[2] = first_input[2]
-    if cells == teo[3]:
-        teo[3] = "X"
-    else:
-        teo[3] = first_input[3]
-    if cells == teo[4]:
-        teo[4] = "X"
-    else:
-        teo[4] = first_input[4]
-    if cells == teo[5]:
-        teo[5] = "X"
-    else:
-        teo[5] = first_input[5]
-    if cells == teo[6]:
-        teo[6] = "X"
-    else:
-        teo[6] = first_input[6]
-    if cells == teo[7]:
-        teo[7] = "X"
-    else:
-        teo[7] = first_input[7]
-    if cells == teo[8]:
-        teo[8] = "X"
-    else:
-        teo[8] = first_input[8]
+        first_input[0] = "X"
+    elif cells == teo[1]:
+        first_input[1] = "X"
+    elif cells == teo[2]:
+        first_input[2] = "X"
+    elif cells == teo[3]:
+        first_input[3] = "X"
+    elif cells == teo[4]:
+        first_input[4] = "X"
+    elif cells == teo[5]:
+        first_input[5] = "X"
+    elif cells == teo[6]:
+        first_input[6] = "X"
+    elif cells == teo[7]:
+        first_input[7] = "X"
+    elif cells == teo[8]:
+        first_input[8] = "X"
 
     print("---------")
-    print("|", teo[0], teo[1], teo[2], "|")
-    print("|", teo[3], teo[4], teo[5], "|")
-    print("|", teo[6], teo[7], teo[8], "|")
+    print("|", first_input[0], first_input[1], first_input[2], "|")
+    print("|", first_input[3], first_input[4], first_input[5], "|")
+    print("|", first_input[6], first_input[7], first_input[8], "|")
     print("---------")
+    global row, column, diagonal
+    row = [[first_input[0], first_input[1], first_input[2]], [first_input[3], first_input[4], first_input[5]],
+           [first_input[6], first_input[7], first_input[8]]]
+    column = [[first_input[0], first_input[3], first_input[6]], [first_input[1], first_input[4], first_input[7]],
+              [first_input[2], first_input[5], first_input[8]]]
+    diagonal = [[first_input[0], first_input[4], first_input[8]], [first_input[2], first_input[4], first_input[6]]]
+    global x_wins_row1, o_wins_row1, x_wins_row2, o_wins_row2, x_wins_row3, o_wins_row3
+    x_wins_row1 = player1 == row[0][0] == row[0][1] == row[0][2]
+    o_wins_row1 = player2 == row[0][0] == row[0][1] == row[0][2]
+    x_wins_row2 = player1 == row[1][0] == row[1][1] == row[1][2]
+    o_wins_row2 = player2 == row[1][0] == row[1][1] == row[1][2]
+    x_wins_row3 = player1 == row[2][0] == row[2][1] == row[2][2]
+    o_wins_row3 = player2 == row[2][0] == row[2][1] == row[2][2]
+    global x_wins_diagonal1, o_wins_diagonal1, x_wins_diagonal2, o_wins_diagonal2
+    x_wins_diagonal1 = player1 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
+    o_wins_diagonal1 = player2 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
+    x_wins_diagonal2 = player1 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
+    o_wins_diagonal2 = player2 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
+    global x_wins_column1, o_wins_column1, x_wins_column2, o_wins_column2, x_wins_column3, o_wins_column3
+    x_wins_column1 = player1 == column[0][0] == column[0][1] == column[0][2]
+    o_wins_column1 = player2 == column[0][0] == column[0][1] == column[0][2]
+    x_wins_column2 = player1 == column[1][0] == column[1][1] == column[1][2]
+    o_wins_column2 = player2 == column[1][0] == column[1][1] == column[1][2]
+    x_wins_column3 = player1 == column[2][0] == column[2][1] == column[2][2]
+    o_wins_column3 = player2 == column[2][0] == column[2][1] == column[2][2]
+    global x_winnings, o_winnings, winnings, draw
+    x_winnings = x_wins_row1 or x_wins_row2 or x_wins_row3 or x_wins_diagonal1 or x_wins_diagonal2 or x_wins_column1 \
+                 or x_wins_column2 or x_wins_column3
+    o_winnings = o_wins_row1 or o_wins_row2 or o_wins_row3 or o_wins_diagonal1 or o_wins_diagonal2 or o_wins_column1 \
+                 or o_wins_column2 or o_wins_column3
+    winnings = x_winnings or o_winnings
+    draw = not x_winnings and not o_winnings and empty_space1 not in first_input
 
 
-moves()
-row = [[teo[0], teo[1], teo[2]], [teo[3], teo[4], teo[5]], [teo[6], teo[7], teo[8]]]
-column = [[teo[0], teo[3], teo[6]], [teo[1], teo[4], teo[7]], [teo[2], teo[5], teo[8]]]
-diagonal = [[teo[0], teo[4], teo[8]], [teo[2], teo[4], teo[6]]]
-count_x = teo.count(player1)
-count_o = teo.count(player2)
-if count_x == 0:
-    count_x = 1
-elif count_o == 0:
-    count_o = 1
-x_wins_row1 = player1 == row[0][0] == row[0][1] == row[0][2]
-o_wins_row1 = player2 == row[0][0] == row[0][1] == row[0][2]
-x_wins_row2 = player1 == row[1][0] == row[1][1] == row[1][2]
-o_wins_row2 = player2 == row[1][0] == row[1][1] == row[1][2]
-x_wins_row3 = player1 == row[2][0] == row[2][1] == row[2][2]
-o_wins_row3 = player2 == row[2][0] == row[2][1] == row[2][2]
+def o_moves():
+    alphabet = list("abcdefghijklmnopqrstuvwxyz")
+    cells = input("Enter the coordinates: ")
+    cells = list(cells)
+    cells_check = any(item in cells for item in alphabet)
+    while cells_check:
+        print("You should enter numbers!")
+        cells = input("Enter the coordinates: ")
+        cells = list(cells)
+        cells_check = any(item in cells for item in alphabet)
+    cells = list(cells)
+    check1 = int(cells[0]) < 1 or int(cells[0]) > 3
+    check2 = int(cells[2]) < 1 or int(cells[2]) > 3
+    while check1 or check2:
+        print("Coordinates should be from 1 to 3!")
+        cells = input("Enter the coordinates: ")
+        check1 = int(cells[0]) < 1 or int(cells[0]) > 3
+        check2 = int(cells[2]) < 1 or int(cells[2]) > 3
+    cells = "".join(cells)
+    x = cells == teo[0]
+    y = first_input[0] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[0]
+        y = first_input[0] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[1]
+    y = first_input[1] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[1]
+        y = first_input[1] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[2]
+    y = first_input[2] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[2]
+        y = first_input[2] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[3]
+    y = first_input[3] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[3]
+        y = first_input[3] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[4]
+    y = first_input[4] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[4]
+        y = first_input[4] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[5]
+    y = first_input[5] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[5]
+        y = first_input[5] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[6]
+    y = first_input[6] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[6]
+        y = first_input[6] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[7]
+    y = first_input[7] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[7]
+        y = first_input[7] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
+    x = cells == teo[8]
+    y = first_input[8] != " "
+    if x and y:
+        z = 1
+    else:
+        z = 0
+    while z == 1:
+        print("This cell is occupied! Choose another one!")
+        cells = input("Enter the coordinates: ")
+        x = cells == teo[8]
+        y = first_input[8] != " "
+        if x and y:
+            z = 1
+        else:
+            z = 0
 
-x_wins_diagonal1 = player1 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
-o_wins_diagonal1 = player2 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
-x_wins_diagonal2 = player1 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
-o_wins_diagonal2 = player2 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
+    if cells == teo[0]:
+        first_input[0] = "O"
+    elif cells == teo[1]:
+        first_input[1] = "O"
+    elif cells == teo[2]:
+        first_input[2] = "O"
+    elif cells == teo[3]:
+        first_input[3] = "O"
+    elif cells == teo[4]:
+        first_input[4] = "O"
+    elif cells == teo[5]:
+        first_input[5] = "O"
+    elif cells == teo[6]:
+        first_input[6] = "O"
+    elif cells == teo[7]:
+        first_input[7] = "O"
+    elif cells == teo[8]:
+        first_input[8] = "O"
 
-x_wins_column1 = player1 == column[0][0] == column[0][1] == column[0][2]
-o_wins_column1 = player2 == column[0][0] == column[0][1] == column[0][2]
-x_wins_column2 = player1 == column[1][0] == column[1][1] == column[1][2]
-o_wins_column2 = player2 == column[1][0] == column[1][1] == column[1][2]
-x_wins_column3 = player1 == column[2][0] == column[2][1] == column[2][2]
-o_wins_column3 = player2 == column[2][0] == column[2][1] == column[2][2]
+    print("---------")
+    print("|", first_input[0], first_input[1], first_input[2], "|")
+    print("|", first_input[3], first_input[4], first_input[5], "|")
+    print("|", first_input[6], first_input[7], first_input[8], "|")
+    print("---------")
+    global row, column, diagonal
+    row = [[first_input[0], first_input[1], first_input[2]], [first_input[3], first_input[4], first_input[5]],
+           [first_input[6], first_input[7], first_input[8]]]
+    column = [[first_input[0], first_input[3], first_input[6]], [first_input[1], first_input[4], first_input[7]],
+              [first_input[2], first_input[5], first_input[8]]]
+    diagonal = [[first_input[0], first_input[4], first_input[8]], [first_input[2], first_input[4], first_input[6]]]
+    global x_wins_row1, o_wins_row1, x_wins_row2, o_wins_row2, x_wins_row3, o_wins_row3
+    x_wins_row1 = player1 == row[0][0] == row[0][1] == row[0][2]
+    o_wins_row1 = player2 == row[0][0] == row[0][1] == row[0][2]
+    x_wins_row2 = player1 == row[1][0] == row[1][1] == row[1][2]
+    o_wins_row2 = player2 == row[1][0] == row[1][1] == row[1][2]
+    x_wins_row3 = player1 == row[2][0] == row[2][1] == row[2][2]
+    o_wins_row3 = player2 == row[2][0] == row[2][1] == row[2][2]
+    global x_wins_diagonal1, o_wins_diagonal1, x_wins_diagonal2, o_wins_diagonal2
+    x_wins_diagonal1 = player1 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
+    o_wins_diagonal1 = player2 == diagonal[0][0] == diagonal[0][1] == diagonal[0][2]
+    x_wins_diagonal2 = player1 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
+    o_wins_diagonal2 = player2 == diagonal[1][0] == diagonal[1][1] == diagonal[1][2]
+    global x_wins_column1, o_wins_column1, x_wins_column2, o_wins_column2, x_wins_column3, o_wins_column3
+    x_wins_column1 = player1 == column[0][0] == column[0][1] == column[0][2]
+    o_wins_column1 = player2 == column[0][0] == column[0][1] == column[0][2]
+    x_wins_column2 = player1 == column[1][0] == column[1][1] == column[1][2]
+    o_wins_column2 = player2 == column[1][0] == column[1][1] == column[1][2]
+    x_wins_column3 = player1 == column[2][0] == column[2][1] == column[2][2]
+    o_wins_column3 = player2 == column[2][0] == column[2][1] == column[2][2]
+    global x_winnings, o_winnings, winnings, draw
+    x_winnings = x_wins_row1 or x_wins_row2 or x_wins_row3 or x_wins_diagonal1 or x_wins_diagonal2 or x_wins_column1 \
+                 or x_wins_column2 or x_wins_column3
+    o_winnings = o_wins_row1 or o_wins_row2 or o_wins_row3 or o_wins_diagonal1 or o_wins_diagonal2 or o_wins_column1 \
+                 or o_wins_column2 or o_wins_column3
+    winnings = x_winnings or o_winnings
+    draw = not x_winnings and not o_winnings and empty_space1 not in first_input
 
-x_winnings = x_wins_row1 or x_wins_row2 or x_wins_row3 or x_wins_diagonal1 or x_wins_diagonal2 or x_wins_column1 \
-            or x_wins_column2 or x_wins_column3
-o_winnings = o_wins_row1 or o_wins_row2 or o_wins_row3 or o_wins_diagonal1 or o_wins_diagonal2 or o_wins_column1 \
-            or o_wins_column2 or o_wins_column3
-if x_winnings and o_winnings:
-    print("Impossible")
-elif count_x > count_o and count_x % count_o != 1:
-    print("Impossible")
-elif count_o > count_x and count_o % count_x != 1:
-    print("Impossible")
-elif x_winnings:
-    print("X wins")
-elif o_winnings:
-    print("O wins")
-elif empty_space1 in teo or empty_space2 in teo:
-    print("Game not finished")
-elif not x_winnings and not o_winnings and empty_space1 not in teo or empty_space2 not in teo:
-    print("Draw")
-else:
-    print("Impossible")
+
+x_moves()
+o_moves()
+x_moves()
+o_moves()
+while not winnings:
+    x_moves()
+    if x_winnings:
+        print("X wins")
+        break
+    else:
+        o_moves()
+    if o_winnings:
+        print("O wins")
+        break
+    else:
+        x_moves()
+    if x_winnings:
+        print("X wins")
+        break
+    else:
+        o_moves()
+    if o_winnings:
+        print("O wins")
+        break
+    else:
+        x_moves()
+    if x_winnings:
+        print("X wins")
+        break
+    else:
+        print("Draw")
+        break
+print("Game over")
