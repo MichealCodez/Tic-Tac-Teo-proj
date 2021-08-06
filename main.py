@@ -1,7 +1,6 @@
 player1 = "X"
 player2 = "O"
 empty_space1 = " "
-empty_space2 = "_"
 cell1 = "1 1"
 cell2 = "1 2"
 cell3 = "1 3"
